@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -9,21 +8,59 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+            background: url('/knettergek.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
+        
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Witte overlay met 50% transparantie */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: red;
+            font-weight: bold;
+        }
+        
         #teller {
             font-size: 2em;
             font-weight: bold;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        #ondertekst {
+            font-size: 1em;
+            font-style: italic;
+            color: black;
+            margin-top: 10px;
+            width: 80%;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
-    <h1>Huidig Bedrag</h1>
-    <div id="teller">€0,00</div>
+    <div id="overlay">
+        <h1>Wat kosten de containers?</h1>
+        <div id="teller">€0,00</div>
+        <p id="ondertekst">Op 1 maart heeft De Poolster de lekkende containers verlaten. Sindsdien betaalt de Gemeente Amsterdam de huur van deze containers zonder dat er een plan is voor het hergebruik van de containers. Het huurbedrag komt uit documenten van het WOO-verzoek.</p>
+    </div>
     
     <script>
         function updateTeller() {
-            const startDatum = new Date(Date.UTC(2025, 1, 1, 0, 0, 0)); // 1 februari 2025, 00:00:00 UTC
+            const startDatum = new Date(Date.UTC(2025, 2, 1, 0, 0, 0)); // 1 maart 2025, 00:00:00 UTC
             const nu = new Date();
             const verschilSeconden = Math.floor((nu - startDatum) / 1000);
             const bedragPerSeconde = 30129 / (30.44 * 24 * 60 * 60);
